@@ -2,6 +2,7 @@
 #ifndef __LEXER_HPP__
 #define __LEXER_HPP__
 
+#include <exception>
 #include <string>
 
 #include "Token.hpp"
@@ -11,12 +12,14 @@ class Lexer {
   Lexer(void);
   ~Lexer(void);
 
-  void setString(std::string input);
+  void setLexer(std::string input);
   Token nextToken(void);
 
  private:
   std::string input;
   size_t pos;
+
+  int parseNumber(void);
 
   Lexer(Lexer const& lexer);
   Lexer& operator=(Lexer const& lexer);
