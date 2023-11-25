@@ -2,7 +2,7 @@
 #ifndef __TOKEN_HPP__
 #define __TOKEN_HPP__
 
-enum TokenType { NUMBER, PLUS, END, INVALID };
+enum TokenType { NUMBER, PLUS, MINUS, MULTIPLY, DIVIDE, END, INVALID };
 
 struct Token {
   TokenType type;

@@ -16,6 +16,10 @@ class Parser {
 
  private:
   Lexer lexer;
+  Token token;
+
+  int factor(void);
+  int term(void);
 
   Parser(Parser const& parser);
   Parser& operator=(Parser const& parser);

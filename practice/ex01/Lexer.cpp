@@ -30,6 +30,21 @@ Token Lexer::nextToken() {
     return Token(PLUS);
   }
 
+  if (input[pos] == '-') {
+    pos++;
+    return Token(MINUS);
+  }
+
+  if (input[pos] == '*') {
+    pos++;
+    return Token(MULTIPLY);
+  }
+
+  if (input[pos] == '/') {
+    pos++;
+    return Token(DIVIDE);
+  }
+
   return Token(INVALID);
 }
 

@@ -10,7 +10,7 @@ int main(void) {
 
   while (true) {
     try {
-      std::cout << "더하기 연산을 입력하세요: ";
+      std::cout << "연산을 입력하세요: ";
       std::getline(std::cin, input);
       int result = parser.getResult(input);
       std::cout << result << std::endl;
