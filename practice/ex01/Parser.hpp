@@ -4,6 +4,9 @@
 
 #include <string>
 
+#include "Lexer.hpp"
+#include "Token.hpp"
+
 class Parser {
  public:
   Parser(void);
@@ -12,13 +15,7 @@ class Parser {
   int getResult(std::string input);
 
  private:
-  std::string input;
-  size_t pos;
-
-  char nextToken(void);
-  void consumeToken(void);
-  void ignoreWhitespace(void);
-  int parseNumber(void);
+  Lexer lexer;
 
   Parser(Parser const& parser);
   Parser& operator=(Parser const& parser);

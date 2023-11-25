@@ -3,7 +3,8 @@ CXX			= c++
 CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
 
 SRCS		= main.cpp \
-			  Parser.cpp
+			  Parser.cpp \
+			  Lexer.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
