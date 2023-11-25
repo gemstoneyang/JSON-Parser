@@ -17,6 +17,7 @@ class Parser {
 
   char nextToken(void);
   void consumeToken(void);
+  void ignoreWhitespace(void);
   int parseNumber(void);
 
   Parser(Parser const& parser);
