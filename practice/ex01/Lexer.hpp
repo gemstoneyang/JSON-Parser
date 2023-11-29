@@ -19,6 +19,12 @@ class Lexer {
   std::string input;
   size_t pos;
 
+  void skipWhiteSpace(void);
+  bool isEndOfInput(void);
+  Token parseNumberToken(void);
+  Token parseOperatorToken(void);
+
+  bool isOperator(char c);
   int parseNumber(void);
 
   Lexer(Lexer const& lexer);

@@ -11,51 +11,59 @@ void Lexer::setLexer(std::string input) {
   this->pos = 0;
 }
 
-Token Lexer::nextToken() {
-  while (pos < input.size() && isspace(input[pos])) {
-    pos++;
-  }
+Token Lexer::nextToken(void) {
+  skipWhiteSpace();
 
-  if (pos >= input.size()) {
+  if (isEndOfInput()) {
     return Token(END);
   }
 
   if (isdigit(input[pos])) {
-    int value = parseNumber();
-    return Token(NUMBER, value);
+    return parseNumberToken();
   }
 
-  if (input[pos] == '+') {
-    pos++;
-    return Token(PLUS);
-  }
-
-  if (input[pos] == '-') {
-    pos++;
-    return Token(MINUS);
-  }
-
-  if (input[pos] == '*') {
-    pos++;
-    return Token(MULTIPLY);
-  }
-
-  if (input[pos] == '/') {
-    pos++;
-    return Token(DIVIDE);
-  }
-
-  if (input[pos] == '(') {
-    pos++;
-    return Token(LPAREN);
-  }
-
-  if (input[pos] == ')') {
-    pos++;
-    return Token(RPAREN);
+  if (isOperator(input[pos])) {
+    return parseOperatorToken();
   }
 
   return Token(INVALID);
+}
+
+void Lexer::skipWhiteSpace(void) {
+  while (pos < input.size() && isspace(input[pos])) {
+    pos++;
+  }
+}
+
+bool Lexer::isEndOfInput(void) { return pos >= input.size(); }
+
+Token Lexer::parseNumberToken(void) {
+  int value = parseNumber();
+  return Token(NUMBER, value);
+}
+
+Token Lexer::parseOperatorToken(void) {
+  char operatorChar = input[pos++];
+  switch (operatorChar) {
+    case '+':
+      return Token(PLUS);
+    case '-':
+      return Token(MINUS);
+    case '*':
+      return Token(MULTIPLY);
+    case '/':
+      return Token(DIVIDE);
+    case '(':
+      return Token(LPAREN);
+    case ')':
+      return Token(RPAREN);
+    default:
+      return Token(INVALID);
+  }
+}
+
+bool Lexer::isOperator(char c) {
+  return c == '+' || c == '-' || c == '*' || c == '/' || c == '(' || c == ')';
 }
 
 int Lexer::parseNumber(void) {
