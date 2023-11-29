@@ -45,6 +45,16 @@ Token Lexer::nextToken() {
     return Token(DIVIDE);
   }
 
+  if (input[pos] == '(') {
+    pos++;
+    return Token(LPAREN);
+  }
+
+  if (input[pos] == ')') {
+    pos++;
+    return Token(RPAREN);
+  }
+
   return Token(INVALID);
 }
 

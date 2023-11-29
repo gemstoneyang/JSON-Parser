@@ -20,6 +20,7 @@ class Parser {
 
   int factor(void);
   int term(void);
+  int expression(void);
 
   Parser(Parser const& parser);
   Parser& operator=(Parser const& parser);

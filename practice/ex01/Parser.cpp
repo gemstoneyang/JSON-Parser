@@ -10,6 +10,16 @@ int Parser::getResult(std::string input) {
   lexer.setLexer(input);
   token = lexer.nextToken();
 
+  int value = expression();
+
+  if (token.type != END) {
+    throw std::invalid_argument("Invalid token encountered!");
+  }
+
+  return value;
+}
+
+int Parser::expression(void) {
   int value = term();
 
   while (token.type == PLUS || token.type == MINUS) {
@@ -22,21 +32,27 @@ int Parser::getResult(std::string input) {
     }
   }
 
-  if (token.type != END) {
-    throw std::invalid_argument("Invalid token encountered!");
-  }
-
   return value;
 }
 
 int Parser::factor(void) {
-  if (token.type != NUMBER) {
-    throw std::invalid_argument("Invalid token encountered!");
+  if (token.type == NUMBER) {
+    int value = token.value;
+    token = lexer.nextToken();
+    return value;
   }
 
-  int value = token.value;
-  token = lexer.nextToken();
-  return value;
+  if (token.type == LPAREN) {
+    token = lexer.nextToken();
+    int value = expression();
+    if (token.type != RPAREN) {
+      throw std::invalid_argument("Invalid token encountered!");
+    }
+    token = lexer.nextToken();
+    return value;
+  }
+
+  throw std::invalid_argument("Invalid token encountered!");
 }
 
 int Parser::term(void) {
