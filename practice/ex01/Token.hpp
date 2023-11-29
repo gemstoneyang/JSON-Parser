@@ -16,9 +16,9 @@ enum TokenType {
 
 struct Token {
   TokenType type;
-  int value;  // only used for NUMBER token
+  double value;  // only used for NUMBER token
 
-  Token(TokenType type, int value) : type(type), value(value) {}
+  Token(TokenType type, double value) : type(type), value(value) {}
 
   Token(TokenType type) : type(type), value(0) {}
 };

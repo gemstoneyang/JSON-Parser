@@ -38,7 +38,7 @@ void Lexer::skipWhiteSpace(void) {
 bool Lexer::isEndOfInput(void) { return pos >= input.size(); }
 
 Token Lexer::parseNumberToken(void) {
-  int value = parseNumber();
+  double value = parseNumber();
   return Token(NUMBER, value);
 }
 
@@ -66,12 +66,26 @@ bool Lexer::isOperator(char c) {
   return c == '+' || c == '-' || c == '*' || c == '/' || c == '(' || c == ')';
 }
 
-int Lexer::parseNumber(void) {
-  int value = 0;
+double Lexer::parseNumber(void) {
+  double value = 0.0;
+  int decimalPlaces = 0;
 
   while (pos < input.size() && isdigit(input[pos])) {
-    value = value * 10 + (input[pos] - '0');
+    value = value * 10.0 + (input[pos] - '0');
     pos++;
+  }
+
+  if (pos < input.size() && input[pos] == '.') {
+    pos++;
+    while (pos < input.size() && isdigit(input[pos])) {
+      value = value * 10.0 + (input[pos] - '0');
+      decimalPlaces++;
+      pos++;
+    }
+  }
+
+  while (decimalPlaces-- > 0) {
+    value /= 10.0;
   }
 
   return value;

@@ -12,15 +12,15 @@ class Parser {
   Parser(void);
   ~Parser(void);
 
-  int getResult(std::string input);
+  double getResult(std::string input);
 
  private:
   Lexer lexer;
   Token token;
 
-  int factor(void);
-  int term(void);
-  int expression(void);
+  double factor(void);
+  double term(void);
+  double expression(void);
 
   Parser(Parser const& parser);
   Parser& operator=(Parser const& parser);

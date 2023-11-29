@@ -12,7 +12,7 @@ int main(void) {
     try {
       std::cout << "연산을 입력하세요: ";
       std::getline(std::cin, input);
-      int result = parser.getResult(input);
+      double result = parser.getResult(input);
       std::cout << result << std::endl;
     } catch (std::exception& e) {
       std::cerr << e.what() << std::endl;

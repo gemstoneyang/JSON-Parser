@@ -25,7 +25,7 @@ class Lexer {
   Token parseOperatorToken(void);
 
   bool isOperator(char c);
-  int parseNumber(void);
+  double parseNumber(void);
 
   Lexer(Lexer const& lexer);
   Lexer& operator=(Lexer const& lexer);
