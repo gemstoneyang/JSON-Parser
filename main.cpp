@@ -1,16 +1,20 @@
 #include <iostream>
 #include <string>
 
-#include "JsonData.hpp"
+#include "Element/JsonElement.hpp"
+#include "Element/JsonObject.hpp"
 
 int main(void) {
-  std::string s = "hello";
-  JsonData data(s);
+  JsonObject *elem = new JsonObject();
+  JsonObject *value = new JsonObject();
+  JsonObject *value2 = new JsonObject();
+  JsonObject *value3 = new JsonObject();
 
-  // JsonType type = data.getType();
-  std::string str = data.getString();
+  elem->add("hello", value);
+  value->add("wow", value2);
+  value->add("yes", value3);
 
-  std::cout << str << std::endl;
+  std::cout << elem->toString() << std::endl;
 
   return 0;
 }

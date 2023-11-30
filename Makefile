@@ -1,9 +1,10 @@
-NAME		= jsonParser
+NAME		= json_parser
 CXX			= c++
 CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
 
 SRCS		= main.cpp \
-			  JsonData.cpp
+			  Element/JsonElement.cpp \
+			  Element/JsonObject.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
