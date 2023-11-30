@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-JsonObject::JsonObject(void) {}
+JsonObject::JsonObject(void) : JsonElement(JSON_OBJECT) {}
 
 JsonObject::~JsonObject(void) {
   for (JsonMap::iterator it = members.begin(); it != members.end(); ++it) {
