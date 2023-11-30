@@ -5,7 +5,8 @@ CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
 SRCS		= main.cpp \
 			  Element/JsonElement.cpp \
 			  Element/JsonObject.cpp \
-			  Element/JsonArray.cpp
+			  Element/JsonArray.cpp \
+			  Element/JsonNumber.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
