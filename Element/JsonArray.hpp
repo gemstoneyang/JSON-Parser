@@ -16,6 +16,7 @@ class JsonArray : public JsonElement {
 
   void add(JsonElement* element);
   JsonElement* get(int index);
+  std::size_t size() const;
   virtual std::string toString(int indentLevel = 0) const;
 };
 
