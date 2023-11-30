@@ -3,7 +3,6 @@
 #define __JSONOBJECT_HPP__
 
 #include <map>
-#include <stdexcept>
 
 #include "JsonElement.hpp"
 

@@ -1,6 +1,7 @@
 #include "JsonObject.hpp"
 
 #include <sstream>
+#include <stdexcept>
 
 JsonObject::JsonObject(void) : JsonElement(JSON_OBJECT) {}
 

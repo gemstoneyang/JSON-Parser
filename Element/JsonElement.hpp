@@ -18,10 +18,10 @@ class JsonElement {
   JsonElementType type;
 
  public:
-  JsonElement(JsonElementType type) : type(type) {}
-  virtual ~JsonElement();
+  JsonElement(JsonElementType type);
+  virtual ~JsonElement(void);
 
-  JsonElementType getType() const { return type; }
+  JsonElementType getType(void) const;
   virtual std::string toString(int indentLevel = 0) const = 0;
 };
 

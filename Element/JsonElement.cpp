@@ -2,6 +2,6 @@
 
 JsonElement::JsonElement(JsonElementType type) : type(type) {}
 
-JsonElement::~JsonElement() {}
+JsonElement::~JsonElement(void) {}
 
-JsonElementType JsonElement::getType() const { return type; }
+JsonElementType JsonElement::getType(void) const { return type; }
