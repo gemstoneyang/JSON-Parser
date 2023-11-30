@@ -6,7 +6,8 @@ SRCS		= main.cpp \
 			  Element/JsonElement.cpp \
 			  Element/JsonObject.cpp \
 			  Element/JsonArray.cpp \
-			  Element/JsonNumber.cpp
+			  Element/JsonNumber.cpp \
+			  Element/JsonBoolean.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
