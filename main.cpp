@@ -4,6 +4,7 @@
 #include "Element/JsonArray.hpp"
 #include "Element/JsonBoolean.hpp"
 #include "Element/JsonElement.hpp"
+#include "Element/JsonNull.hpp"
 #include "Element/JsonNumber.hpp"
 #include "Element/JsonObject.hpp"
 
@@ -14,12 +15,14 @@ int main(void) {
   JsonNumber *num1 = new JsonNumber(13);
   JsonNumber *num2 = new JsonNumber(42.42);
   JsonBoolean *boolean = new JsonBoolean(false);
+  JsonNull *nullVal = new JsonNull();
 
   elem->add("hello", value);
   value->add("wow", arr);
   arr->add(num1);
   arr->add(num2);
   value->add("yes", boolean);
+  value->add("none", nullVal);
 
   std::cout << elem->toString() << std::endl;
 
