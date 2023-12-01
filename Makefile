@@ -9,7 +9,9 @@ SRCS		= main.cpp \
 			  Element/JsonNumber.cpp \
 			  Element/JsonBoolean.cpp \
 			  Element/JsonNull.cpp \
-			  Element/JsonString.cpp
+			  Element/JsonString.cpp \
+			  Lexer/JsonToken.cpp \
+			  Lexer/JsonLexer.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
