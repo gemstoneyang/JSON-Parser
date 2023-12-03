@@ -1,13 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "Element/JsonArray.hpp"
-#include "Element/JsonBoolean.hpp"
-#include "Element/JsonElement.hpp"
-#include "Element/JsonNull.hpp"
-#include "Element/JsonNumber.hpp"
-#include "Element/JsonObject.hpp"
-#include "Element/JsonString.hpp"
+#include "Element/JsonElements.hpp"
 #include "Lexer/JsonLexer.hpp"
 
 int main(void) {
