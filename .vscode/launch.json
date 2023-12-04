@@ -6,7 +6,7 @@
             "type": "lldb",
             "request": "launch",
             "program": "${workspaceFolder}/json_parser",
-            "args": [],
+            "args": ["test_file.json"],
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "build (debug)",
         }

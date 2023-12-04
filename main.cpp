@@ -1,4 +1,6 @@
+#include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 #include "Element/JsonElements.hpp"
@@ -43,7 +45,7 @@ void printJsonElement(JsonElement *element, int indent = 0) {
   }
 }
 
-int main(void) {
+int main(int argc, char **argv) {
   {
     JsonObject *elem = new JsonObject();
     JsonObject *value = new JsonObject();
@@ -132,6 +134,33 @@ int main(void) {
         "{\"name\": \"John\", \"age\": 30, \"isMarried\": false, \"hobbies\": "
         "[\"reading\", \"coding\"], \"address\": null}";
     JsonParser parser(jsonInput);
+
+    try {
+      JsonElement *root = parser.parse();
+      printJsonElement(root);
+      std::cout << std::endl;
+      std::cout << root->toString() << std::endl;
+      delete root;
+    } catch (const std::exception &e) {
+      std::cerr << "Parsing error: " << e.what() << std::endl;
+    }
+  }
+
+  std::cout << "---------------------\n" << std::endl;
+
+  {
+    (void)argc;
+    std::ifstream file(argv[1]);
+    if (!file.is_open()) {
+        std::cerr << "Unable to open file: " << argv[1] << "\n";
+        return 1;
+    }
+    
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    std::string fileContent = buffer.str();
+
+    JsonParser parser(fileContent);
 
     try {
       JsonElement *root = parser.parse();
