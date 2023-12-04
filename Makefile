@@ -23,7 +23,7 @@ $(NAME) : 	$(OBJS)
 			$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
 debug:		CXXFLAGS += $(DBGFLAGS)
-debug:		$(NAME)
+debug:		clean $(NAME)
 
 %.o	: 		%.cpp
 			$(CXX) $(CXXFLAGS) -c $^ -I./ -o $@

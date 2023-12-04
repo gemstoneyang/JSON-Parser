@@ -14,7 +14,7 @@
             "label": "build (debug)",
             "type": "shell",
             "command": "make",
-            "args": ["debug"]
+            "args": ["debug", "-j"]
         },
         {
             "label": "clean",
