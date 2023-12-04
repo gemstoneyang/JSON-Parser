@@ -1,6 +1,7 @@
 NAME		= json_parser
 CXX			= c++
 CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
+DBGFLAGS	= -g
 
 SRCS		= main.cpp \
 			  Element/JsonElement.cpp \
@@ -11,7 +12,8 @@ SRCS		= main.cpp \
 			  Element/JsonNull.cpp \
 			  Element/JsonString.cpp \
 			  Lexer/JsonToken.cpp \
-			  Lexer/JsonLexer.cpp
+			  Lexer/JsonLexer.cpp \
+			  Parser/JsonParser.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
@@ -19,6 +21,9 @@ all	:		$(NAME)
 
 $(NAME) : 	$(OBJS)
 			$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+
+debug:		CXXFLAGS += $(DBGFLAGS)
+debug:		$(NAME)
 
 %.o	: 		%.cpp
 			$(CXX) $(CXXFLAGS) -c $^ -I./ -o $@
@@ -34,4 +39,4 @@ re	:
 			make fclean
 			make all
 
-.PHONY	:	all clean fclean re
+.PHONY	:	all clean fclean re debug
